@@ -3,17 +3,17 @@
 public class Parallax : MonoBehaviour
 {
     private Material material;
-    [SerializeField] 
-    private float parallaxFactor = 0.01f;
+
+    [SerializeField]
+    private float parallaxFactor = 0.1f; // Độ nhạy của hiệu ứng trôi
+
     private float offset;
-    public float gameSpeed = 5f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         material = GetComponent<Renderer>().material;
     }
 
-    // Update is called once per frame
     void Update()
     {
         ParallaxScroll();
@@ -21,15 +21,16 @@ public class Parallax : MonoBehaviour
 
     private void ParallaxScroll()
     {
-        // 1. Lấy tốc độ từ GameManager (nếu có) để đồng bộ
-        float speed = gameSpeed * parallaxFactor;
+        // --- THAY ĐỔI QUAN TRỌNG ---
+        // Lấy hướng di chuyển trực tiếp từ script Movement
+        float moveDirection = Movement.HorizontalInput;
 
-        // 2. Tính toán tốc độ trôi dựa trên hệ số Parallax
-        offset += Time.deltaTime * speed;
+        // Công thức mới: Offset chỉ tăng khi moveDirection khác 0 (khi nhân vật di chuyển)
+        // Nếu moveDirection = 0, toàn bộ phép nhân bằng 0 -> Map đứng yên
+        offset += moveDirection * parallaxFactor * Time.deltaTime;
 
-        
-
-        // 4. Set lại offset cho Texture (SỬA LỖI Ở ĐÂY: _MainTex)
-        material.SetTextureOffset("_MainTex", Vector2.right * offset);
+        // Cập nhật vị trí ảnh (Texture Offset) theo trục ngang (X)
+        material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+        // ---------------------------
     }
 }
