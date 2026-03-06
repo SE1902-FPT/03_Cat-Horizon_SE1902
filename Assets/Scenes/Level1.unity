@@ -232,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -354.07495, y: -157.67215}
+  m_AnchoredPosition: {x: -465, y: 271}
   m_SizeDelta: {x: 133.8501, y: 38.6558}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &544095801
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d74c45435f89f458961ae5c4bfacec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPrefab: {fileID: 6002518863810026259, guid: 1091e0251b9931b409380412ae53e932, type: 3}
+  enemyPrefab: {fileID: 6002518863810026259, guid: 54725699fbdbbfb41af4d605bb42670d, type: 3}
   spawnRate: 2
   xRange: 8
   spawnY: 6
@@ -462,6 +462,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   speed: 5
   animator: {fileID: 1320342708}
+  attack: {fileID: 0}
+  firingPoint: {fileID: 0}
+  firingCooldown: 0
 --- !u!95 &1320342708
 Animator:
   serializedVersion: 7
@@ -648,6 +651,7 @@ MonoBehaviour:
   - {fileID: 1425025552}
   - {fileID: 1944593841}
   - {fileID: 288618076}
+  invincibilityDuration: 0.5
 --- !u!1 &1425025552
 GameObject:
   m_ObjectHideFlags: 0
