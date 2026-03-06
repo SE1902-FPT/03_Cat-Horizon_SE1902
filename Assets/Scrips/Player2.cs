@@ -14,10 +14,13 @@ public class Player2 : MonoBehaviour
 
     private Vector2 lastDirection = Vector2.right; // mặc định quay phải
 
+    private float firePointX;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        firePointX = firingPoint.localPosition.x;
     }
 
     void Update()
@@ -35,9 +38,16 @@ public class Player2 : MonoBehaviour
         animator.SetBool("isWalk", moveDir != Vector2.zero);
 
         // Flip sprite Player (KHÔNG flip transform)
-        if (h > 0) sr.flipX = false;
-        else if (h < 0) sr.flipX = true;
-
+        if (h > 0)
+        {
+            sr.flipX = false;
+            firingPoint.localPosition = new Vector3(firePointX, firingPoint.localPosition.y, 0);
+        }
+        else if (h < 0)
+        {
+            sr.flipX = true;
+            firingPoint.localPosition = new Vector3(-firePointX, firingPoint.localPosition.y, 0);
+        }
         // Di chuyển
         transform.Translate(moveDir * speed * Time.deltaTime);
 

@@ -5,26 +5,18 @@ public class Attack : MonoBehaviour
     [SerializeField] private float speed = 10f;
 
     private Vector2 direction;
-    private SpriteRenderer sr;
-
-    void Awake()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
 
     public void SetDirection(Vector2 dir)
     {
         direction = dir.normalized;
 
-        // Flip sprite / animation theo hướng bắn
-        if (direction.x < 0)
-            sr.flipX = true;
-        else
-            sr.flipX = false;
+        // Xoay viên đạn theo hướng bay
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     void Update()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 }
