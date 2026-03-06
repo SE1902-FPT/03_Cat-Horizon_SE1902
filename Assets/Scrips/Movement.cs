@@ -6,6 +6,11 @@ public class Movement : MonoBehaviour
     private float speed = 5f;
     [SerializeField]
     private Animator animator;
+    [SerializeField] private Attack attack;
+    [SerializeField] private Transform firingPoint;
+    [SerializeField] private float firingCooldown;
+
+    private float tempCooldown;
     private Rigidbody2D rb;
 
     // --- PHẦN THÊM MỚI ---
@@ -14,7 +19,8 @@ public class Movement : MonoBehaviour
     public static float HorizontalInput { get; private set; }
     // ---------------------
 
-        
+    private Vector2 lastDirection = Vector2.right;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,5 +48,20 @@ public class Movement : MonoBehaviour
 
         Vector2 direction = new Vector2(HorizontalInput, vertical);
         transform.Translate(direction * Time.deltaTime * speed);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (tempCooldown <= 0)
+            {
+                Fire();
+                tempCooldown = firingCooldown;
+            }
         }
+        tempCooldown -= Time.deltaTime;
     }
+
+    private void Fire()
+    {
+        Instantiate(attack, firingPoint.position, Quaternion.identity, null);
+    }
+}
