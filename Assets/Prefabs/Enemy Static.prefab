@@ -175,6 +175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatic
   moveSpeed: 5
   targetPosition: {x: 0, y: 0, z: 0}
-  bulletPrefab: {fileID: 6863855563405600817, guid: 5dbad5b07697d9e419e5eb776c7981c9, type: 3}
+  bulletPrefab: {fileID: 6863855563405600817, guid: 86c8529959c702e4bb10c343d7e09714, type: 3}
   firePoint: {fileID: 2680401109005166232}
   fireCooldown: 2

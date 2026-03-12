@@ -966,12 +966,12 @@ MonoBehaviour:
   - {fileID: 1361294617}
   - {fileID: 927143685}
   path:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1978576961}
+  - {fileID: 1427622104}
+  - {fileID: 599155037}
+  - {fileID: 645188225}
+  - {fileID: 704727823}
+  - {fileID: 1749275288}
 --- !u!4 &1976456377
 Transform:
   m_ObjectHideFlags: 0
