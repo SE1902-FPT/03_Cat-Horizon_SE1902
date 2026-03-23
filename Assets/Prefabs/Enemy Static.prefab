@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.7201, y: 0.5191, z: 0}
-  m_LocalScale: {x: 0.3119, y: 0.5281, z: 1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2680401109005166232}
@@ -115,7 +115,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1864640793183210704, guid: fc333659e303e644c8ff3a82212f869b, type: 3}
+  m_Sprite: {fileID: -5174414999110290888, guid: c6409ba55d4b68440b15963de7e7fcbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -174,7 +174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatic
   moveSpeed: 5
-  targetPosition: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 6863855563405600817, guid: 86c8529959c702e4bb10c343d7e09714, type: 3}
   firePoint: {fileID: 2680401109005166232}
   fireCooldown: 2

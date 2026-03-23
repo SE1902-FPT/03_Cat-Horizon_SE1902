@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public static WaveSpawner instance;
+
     public EnemyStatic enemyPrefab;
     public EnemyPath enemyPathPrefab;
 
@@ -11,7 +13,12 @@ public class WaveSpawner : MonoBehaviour
     public Transform[] path;
 
     int wave = 1;
-    int enemiesAlive;
+    int enemiesAlive = 0;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -20,6 +27,8 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnWave()
     {
+        Debug.Log("Wave: " + wave);
+
         if (wave == 1)
         {
             SpawnStatic(frontSpawn, 4);

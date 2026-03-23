@@ -3,48 +3,46 @@ using UnityEngine;
 public class EnemyStatic : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public Vector3 targetPosition;
+
+    Vector3 targetPosition;
 
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireCooldown = 2f;
 
-    float tempCooldown;
-    bool reached = false;
-
-    void Start()
-    {
-        tempCooldown = Random.Range(0.5f, fireCooldown);
-    }
+    float fireTimer;
 
     void Update()
     {
-        if (!reached)
-        {
-            transform.position = Vector3.MoveTowards(
-                transform.position,
-                targetPosition,
-                moveSpeed * Time.deltaTime
-            );
+        Move();
+        Shoot();
+    }
 
-            if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
-                reached = true;
-        }
-        else
-        {
-            Shoot();
-        }
+    void Move()
+    {
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPosition,
+            moveSpeed * Time.deltaTime
+        );
     }
 
     void Shoot()
     {
-        if (tempCooldown <= 0)
-        {
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-            tempCooldown = fireCooldown;
-        }
+        fireTimer += Time.deltaTime;
 
-        tempCooldown -= Time.deltaTime;
+        if (fireTimer >= fireCooldown)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+
+            Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+
+            Vector2 direction = player.position - firePoint.position;
+
+            bullet.GetComponent<Attack1>().SetDirection(direction);
+
+            fireTimer = 0;
+        }
     }
 
     public void Init(Vector3 target)
@@ -54,6 +52,9 @@ public class EnemyStatic : MonoBehaviour
 
     void OnDestroy()
     {
-        FindObjectOfType<WaveSpawner>().EnemyDied();
+        if (WaveSpawner.instance != null)
+        {
+            WaveSpawner.instance.EnemyDied();
+        }
     }
 }
