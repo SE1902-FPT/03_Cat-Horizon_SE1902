@@ -38,5 +38,21 @@ public class Attack : MonoBehaviour
             // 3. Tiêu diệt chính viên đạn
             Destroy(gameObject);
         }
+
+        if (collision.CompareTag("Boss"))
+        {
+            // Lấy component quản lý máu trên Boss
+            BossHealth boss = collision.GetComponent<BossHealth>();
+
+            if (boss != null)
+            {
+                // Gây 1 sát thương (1 hit)
+                boss.TakeDamage(1);
+            }
+
+            // Tiêu diệt viên đạn ngay lập tức (Boss không bị Destroy tại đây)
+            Destroy(gameObject);
+        }
     }
+    
 }

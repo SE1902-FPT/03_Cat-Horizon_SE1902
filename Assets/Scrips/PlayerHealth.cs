@@ -16,12 +16,22 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float invincibilityDuration = 0.5f; // Thời gian bất tử & nhấp nháy
     // ----------------------------------------------
 
+    // --- PHẦN BỔ SUNG CHO GAME OVER ---
+    [SerializeField] private GameObject gameOverPanel; // Kéo GameOverPanel vào đây
+    // ----------------------------------------------
+
     void Start()
     {
         currentHealth = maxHealth;
         // Khởi tạo tham chiếu
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Đảm bảo GameOverPanel luôn tắt khi bắt đầu game
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -45,7 +55,12 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("Game Over!");
-            Time.timeScale = 0;
+            // Kích hoạt cửa sổ Game Over
+            if (gameOverPanel != null)
+            {
+                gameOverPanel.SetActive(true);
+            }
+            Time.timeScale = 0; // Tạm dừng trò chơi
         }
     }
 

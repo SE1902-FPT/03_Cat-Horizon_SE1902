@@ -51,4 +51,6 @@ public class BossController : MonoBehaviour
         BossAtkController projectile = Instantiate(m_Projectile, m_FiringPoint.position, Quaternion.identity, null);
         projectile.Fire();
     }
+
+
 }
