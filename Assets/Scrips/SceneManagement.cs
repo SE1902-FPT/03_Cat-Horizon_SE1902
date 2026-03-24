@@ -80,4 +80,10 @@ public class SceneManagement : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("Story3");
     }
+
+    public void FinalStory()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("FinalStory");
+    }
 }

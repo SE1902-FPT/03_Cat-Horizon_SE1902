@@ -24,14 +24,18 @@ public class BossAtkController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Kiểm tra nếu chạm vào đối tượng có Tag là Enemy
         if (collision.CompareTag("Player"))
         {
+            // Lấy script Health của Player
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
 
-            // 2. Tiêu diệt kẻ địch
-            Destroy(collision.gameObject);
+            if (playerHealth != null)
+            {
+                // Gây 1 sát thương (vì MaxHealth là 1 nên sẽ chết luôn)
+                playerHealth.TakeDamage(1);
+            }
 
-            // 3. Tiêu diệt chính viên đạn
+            // Biến mất viên đạn
             Destroy(gameObject);
         }
     }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
@@ -21,14 +21,20 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Chỉ chạy logic nếu Boss đã được kích hoạt
+        if (!m_Active) return;
+
+        // Logic di chuyển giữa các WayPoints
         int nextWayPoint = m_CurrentWayPointIndex + 1;
         if (nextWayPoint > m_WayPoints.Length - 1)
             nextWayPoint = 0;
 
         transform.position = Vector3.MoveTowards(transform.position, m_WayPoints[nextWayPoint].position, m_MoveSpeed * Time.deltaTime);
+
         if (transform.position == m_WayPoints[nextWayPoint].position)
             m_CurrentWayPointIndex = nextWayPoint;
 
+        // Logic bắn đạn
         if (m_TempCooldown <= 0)
         {
             Fire();
