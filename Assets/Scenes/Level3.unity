@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6caabb237b67da46b03b0f0168587c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  health: 20
+  health: 1
   winPanel: {fileID: 293902082}
 --- !u!1001 &114606835
 PrefabInstance:
@@ -1037,7 +1037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -459, y: -284}
+  m_AnchoredPosition: {x: 453, y: 278}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737026063
@@ -1469,7 +1469,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 620e2e2cd1ee82840ab28c8255099b78, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
